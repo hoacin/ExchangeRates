@@ -5,7 +5,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
 {
     static class CnbContentParser
     {
-        public static (ExchangeRateModel[] models, ExchangeRateError errorCode) Parse(string cnbContent, string cnbDesiredDate)
+        public static (ExchangeRateModel[]? models, ExchangeRateError errorCode) Parse(string cnbContent, string cnbDesiredDate)
         {
             List<ExchangeRateModel> exchangeRates = new();
             if (string.IsNullOrWhiteSpace(cnbContent))
@@ -17,7 +17,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
                     return (null, ExchangeRateError.ResourceNotFound);
                 foreach (string line in lines[2..])
                 {
-                    ExchangeRateModel model = CnbLineParser.Parse(line);
+                    ExchangeRateModel? model = CnbLineParser.Parse(line);
                     if (model is null)
                         return (null, ExchangeRateError.InternalError);
                     exchangeRates.Add(model);

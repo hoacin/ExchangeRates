@@ -25,7 +25,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
             }
             catch
             {
-                return (null, ExchangeRateError.ServiceDown);
+                return (string.Empty, ExchangeRateError.ServiceDown);
             }
             return (cnbContent, ExchangeRateError.Success);
         }

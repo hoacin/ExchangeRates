@@ -18,7 +18,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider
             _currenciesProvider = new CurrenciesProvider(cnbExchangeRatesProvider);
             _oneCurrencyProvider = new OneCurrencyProvider(cnbExchangeRatesProvider);
         }
-        public Task<(IEnumerable<ExchangeRateModel> models, ExchangeRateError errorCode)> GetAllCurrenciesAsync(string ddmmyyyy)
+        public Task<(IEnumerable<ExchangeRateModel>? models, ExchangeRateError errorCode)> GetAllCurrenciesAsync(string ddmmyyyy)
         {
             return _currenciesProvider.GetAllCurrenciesAsync(ddmmyyyy);
         }

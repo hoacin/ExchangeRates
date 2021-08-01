@@ -6,7 +6,7 @@ namespace ExchangeRates.API.Logic.Implementations.Mock
 {
     class MockExchangeRatesProvider : IExchangeRatesProvider
     {
-        public Task<(IEnumerable<ExchangeRateModel>, ExchangeRateError)> GetAllCurrenciesAsync(string ddmmyyyy)
+        public Task<(IEnumerable<ExchangeRateModel>?, ExchangeRateError)> GetAllCurrenciesAsync(string ddmmyyyy)
         {
             return CurrenciesProvider.GetAllCurrenciesAsync(ddmmyyyy);
         }

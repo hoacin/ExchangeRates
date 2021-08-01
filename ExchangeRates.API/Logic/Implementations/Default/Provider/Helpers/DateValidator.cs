@@ -7,7 +7,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
     {
         public static bool TryConvertForCNB(string ddmmyyyy, out string dateForCNB)
         {
-            dateForCNB = null;
+            dateForCNB = string.Empty;
             if (string.IsNullOrWhiteSpace(ddmmyyyy))
                 return false;
             if (!DateTime.TryParseExact(ddmmyyyy, "ddMMyyyy", null, DateTimeStyles.None, out DateTime validDate))

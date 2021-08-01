@@ -4,7 +4,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
 {
     static class CnbLineParser
     {
-        public static ExchangeRateModel Parse(string cnbLine)
+        public static ExchangeRateModel? Parse(string cnbLine)
         {
             string[] columns = cnbLine.Split('|');
             if (!double.TryParse(columns[4].Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out double exchangeRate))

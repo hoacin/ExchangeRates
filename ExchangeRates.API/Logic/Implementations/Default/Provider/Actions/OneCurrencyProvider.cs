@@ -15,16 +15,16 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Actions
         public async Task<(ExchangeRateModel model, ExchangeRateError errorCode)> GetOneCurrencyAsync(string ddmmyyyy, string currencyCode)
         {
             if (!DateValidator.TryConvertForCNB(ddmmyyyy, out string cnbDateFormat))
-                return (null, ExchangeRateError.InvalidTimeFormat);
+                return (ExchangeRateModel.EmptyModel, ExchangeRateError.InvalidTimeFormat);
             var (models, errorCode) = await _cnbExchangeRatesProvider.GetExchangeRatesForDay(cnbDateFormat);
             if (errorCode != ExchangeRateError.Success)
-                return (null, errorCode);
+                return (ExchangeRateModel.EmptyModel, errorCode);
 
-            foreach (ExchangeRateModel model in models)
+            foreach (ExchangeRateModel model in models!)
                 if (model.CurrencyCode == currencyCode)
                     return (model, ExchangeRateError.Success);
 
-            return (null, ExchangeRateError.CurrencyNotFound);
+            return (ExchangeRateModel.EmptyModel, ExchangeRateError.CurrencyNotFound);
         }
     }
 }

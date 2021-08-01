@@ -24,7 +24,7 @@ namespace ExchangeRates.API.Controllers
         [SwaggerResponse((int)HttpStatusCode.BadRequest)]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         [SwaggerResponse(500)]
-        public async Task<ActionResult<IEnumerable<ExchangeRateModel>>> GetExchangeRates(string ddmmyyyy)
+        public async Task<ActionResult<IEnumerable<ExchangeRateModel>?>> GetExchangeRates(string ddmmyyyy)
         {
             var (models, errorCode) = await _exchangeRatesProvider.GetAllCurrenciesAsync(ddmmyyyy);
             return this.CreateResponse(errorCode, models);

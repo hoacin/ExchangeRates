@@ -17,7 +17,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Helpers
             _cnbRatesDownloader = new CnbRatesDownloader(httpClientFactory);
         }
 
-        public async Task<(ExchangeRateModel[] models, ExchangeRateError errorCode)> GetExchangeRatesForDay(string cnbDateFormat)
+        public async Task<(ExchangeRateModel[]? models, ExchangeRateError errorCode)> GetExchangeRatesForDay(string cnbDateFormat)
         {
             string keyInCache = $"{RegionPrefix}{cnbDateFormat}";
             if (_memoryCache.TryGetValue(keyInCache, out object ratesTable))

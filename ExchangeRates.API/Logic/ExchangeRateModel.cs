@@ -5,6 +5,8 @@ namespace ExchangeRates.API.Logic
 {
     public sealed class ExchangeRateModel
     {
+        public static readonly ExchangeRateModel EmptyModel = new("", 0, 0);
+
         [Required]
         [JsonProperty(Required = Required.DisallowNull)]
         public string CurrencyCode { get; }

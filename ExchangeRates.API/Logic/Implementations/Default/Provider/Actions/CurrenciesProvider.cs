@@ -13,7 +13,7 @@ namespace ExchangeRates.API.Logic.Implementations.Default.Provider.Actions
             _cnbExchangeRatesProvider = cnbExchangeRatesProvider;
         }
 
-        public async Task<(IEnumerable<ExchangeRateModel> models, ExchangeRateError errorCode)> GetAllCurrenciesAsync(string ddmmyyyy)
+        public async Task<(IEnumerable<ExchangeRateModel>? models, ExchangeRateError errorCode)> GetAllCurrenciesAsync(string ddmmyyyy)
         {
             if (!DateValidator.TryConvertForCNB(ddmmyyyy, out string cnbDateFormat))
                 return (null, ExchangeRateError.InvalidTimeFormat);

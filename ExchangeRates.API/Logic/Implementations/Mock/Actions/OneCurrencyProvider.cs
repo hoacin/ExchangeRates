@@ -7,7 +7,7 @@ namespace ExchangeRates.API.Logic.Implementations.Mock.Actions
     {
         public static Task<(ExchangeRateModel, ExchangeRateError)> GetOneCurrencyAsync(string ddmmyyyy, string currencyCode)
         {
-            ExchangeRateModel model = null;
+            ExchangeRateModel model = ExchangeRateModel.EmptyModel;
             if (!DateTester.TestDate(ddmmyyyy, out ExchangeRateError errorCode))
                 return Task.FromResult((model, errorCode));
             if (currencyCode != "EUR")
